@@ -1,25 +1,25 @@
-# pragma once
-# включить  < iostream >
-# включить  < cstring >
-# включить  < cctype >
-# include  < строка >
-# include  < locale >
-# include  < codecvt >
-# include  < вектор >
-# include  < карта >
-используя  пространство имен  std ;
-класс  modAlphaCipher
+#pragma once
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <string>
+#include <locale>
+#include <codecvt>
+#include <vector>
+#include <map>
+using namespace std;
+class modAlphaCipher
 {
-частный:
-    строка numAlpha =
-        " АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ " ; // алфавит по порядку
-    карта < char , int > alphaNum; // ассоциативный массив "номер по символу"
-    вектор < int > ключ; // ключ
-    vector < int > convert ( const string & s); // преобразование строка-вектор
-преобразование     строки ( const vector < int > & v); // преобразование вектор-строка
-общественность:
-    modAlphaCipher () = удалить ; // запретим конструктор без параметров
-    modAlphaCipher ( сопзЬ строку & SKEY); // конструктор для установки ключа
-    строковое шифрование ( const string & open_text); // зашифрование
-расшифровка     строки ( const string & cipher_text); // расшифрование
-}
+private:
+    string numAlpha =
+        "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"; //алфавит по порядку
+    map <char,int> alphaNum; //ассоциативный массив "номер по символу"
+    vector <int> key; //ключ
+    vector<int> convert(const string& s); //преобразование строка-вектор
+    string convert(const vector<int>& v); //преобразование вектор-строка
+public:
+    modAlphaCipher()=delete; //запретим конструктор без параметров
+    modAlphaCipher(const string& skey); //конструктор для установки ключа
+    string encrypt(const string& open_text); //зашифрование
+    string decrypt(const string& cipher_text);//расшифрование
+};
